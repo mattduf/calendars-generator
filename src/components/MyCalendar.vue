@@ -9,7 +9,21 @@
         max-width="450"
         variant="underlined"
       />
-      <v-text-field v-model="title2" label="Titre 2" max-width="450" variant="underlined" />
+      <v-text-field
+        v-model="title2"
+        append-icon="mdi-plus"
+        label="Titre 2"
+        max-width="450"
+        variant="underlined"
+        @click:append="showCaption = !showCaption"
+      />
+      <v-text-field
+        v-show="showCaption"
+        v-model="caption"
+        label="Détails"
+        max-width="450"
+        variant="underlined"
+      />
     </section>
 
     <section>
@@ -28,7 +42,8 @@
     <v-dialog v-model="dialog" fullscreen>
       <v-card class="py-8 px-9">
         <p class="calendar-h1">{{ title1 }}</p>
-        <p class="calendar-h2">{{ title2 }}</p>
+        <p class="calendar-h2 mb-3">{{ title2 }}</p>
+        <p v-show="showCaption" class="font-weight-bold">{{ caption }}</p>
 
         <section class="months-grid mt-11">
           <MonthItem
@@ -57,8 +72,10 @@
     months.value.unshift(previousMonth)
   }
 
-  const title1 = ref('Suivi muscu')
-  const title2 = ref('Jours où j’ai fait une séance de Homegym')
+  const title1 = ref('')
+  const title2 = ref('')
+  const caption = ref('')
+  const showCaption = ref(false)
   const dialog = ref(false)
 
   function showFullscreen () {
