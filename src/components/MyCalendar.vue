@@ -46,7 +46,7 @@
   const months = ref<Date[]>([new Date()])
 
   function addOneFollowingMonth () {
-    const lastMonth = months.value.at(-1)
+    const lastMonth = months.value[months.value.length - 1]// eslint-disable-line unicorn/prefer-at
     const nextMonth = new Date(lastMonth.getFullYear(), lastMonth.getMonth() + 1, 1)
     months.value.push(nextMonth)
   }
