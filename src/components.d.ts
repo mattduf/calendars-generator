@@ -9,7 +9,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     DayCheckbox: typeof import('./components/DayCheckbox.vue')['default']
-    DayItem: typeof import('./components/DayItem.vue')['default']
     MonthItem: typeof import('./components/MonthItem.vue')['default']
     MyCalendar: typeof import('./components/MyCalendar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
